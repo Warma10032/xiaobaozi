@@ -4,20 +4,23 @@ const papers = [
   {
     title: "CARD: Towards Conditional Design of Multi-agent Topological Structures",
     authors: "T Wu, Y Li, Z Tang, C Jiang, L Luo, G Qi, S Pan, G Haffari",
-    venue: "arXiv preprint arXiv:2603.01089",
-    year: "2026"
+    venue: "ICLR 2026",
+    year: "2026",
+    link: "https://arxiv.org/abs/2603.01089"
   },
   {
     title: "Who Deserves the Reward? SHARP: Shapley Credit-based Optimization for Multi-Agent System",
     authors: "Y Li, X Zhang, WJ Lu, Z Tang, M Wu, H Luo, T Wu, Z Peng, H Mi, Y Feng, ...",
-    venue: "arXiv preprint arXiv:2602.08335",
-    year: "2026"
+    venue: "arXiv preprint",
+    year: "2026",
+    link: "https://arxiv.org/abs/2602.08335"
   },
   {
     title: "Two Steps to Precision: Enhancing Reliable API Invocation in Code Generation",
     authors: "Y Li, Z Tang, S Wang, G Qi",
-    venue: "CCF International Conference on Natural Language Processing and Chinese Computing (NLPCC)",
-    year: "2025"
+    venue: "NLPCC 2025",
+    year: "2025",
+    link: "#"
   }
 ]
 
@@ -53,14 +56,25 @@ export default function Academic() {
           <h4 className={styles.papersTitle}>Selected Publications</h4>
           <div className={styles.paperList}>
             {papers.map((paper, index) => (
-              <div key={index} className={styles.paper}>
+              <a
+                key={index}
+                href={paper.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.paper}
+              >
                 <span className={styles.paperYear}>{paper.year}</span>
                 <div className={styles.paperInfo}>
                   <span className={styles.paperName}>{paper.title}</span>
                   <span className={styles.paperAuthors}>{paper.authors}</span>
                   <span className={styles.paperVenue}>{paper.venue}</span>
                 </div>
-              </div>
+                <svg className={styles.externalIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
             ))}
           </div>
         </div>
