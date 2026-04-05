@@ -2,75 +2,78 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem;
+  padding: 4rem;
   position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .heroContent {
-  text-align: center;
-  z-index: 1;
+  max-width: 700px;
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  margin: 0 auto 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-  font-weight: 600;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border: 2px solid var(--border);
 }
 
 .name {
-  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
-  font-size: 2.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 3.5rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   margin-bottom: 0.5rem;
+  color: var(--text);
 }
 
 .handle {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.125rem;
   color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-.handle::before {
-  content: '✦';
-  margin-right: 0.5rem;
-  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .tagline {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   color: var(--text-muted);
-  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--text);
+  margin-bottom: 2rem;
 }
 
 .scrollIndicator {
   position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 3rem;
+  left: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   color: var(--muted);
   font-size: 0.75rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
 .scrollLine {

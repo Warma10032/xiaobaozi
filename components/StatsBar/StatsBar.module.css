@@ -1,34 +1,37 @@
 .statsBar {
   display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 1rem 2rem;
-  background: var(--bg-secondary);
+  justify-content: flex-start;
+  gap: 3rem;
+  padding: 2rem 4rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .stat {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 .statIcon {
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .statValue {
   font-weight: 600;
+  font-size: 1.25rem;
   color: var(--text);
 }
 
 .statLabel {
-  color: var(--text-muted);
+  color: var(--muted);
+  font-size: 0.875rem;
 }
 
 .loading {
   color: var(--muted);
+  font-size: 0.875rem;
 }

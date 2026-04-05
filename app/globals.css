@@ -1,9 +1,9 @@
 :root {
-  --bg: #FFFFFF;
-  --bg-secondary: #FAFAFA;
+  --bg: #FAF9F6;
+  --bg-secondary: #F5F4F0;
   --text: #1A1A1A;
   --text-muted: #666666;
-  --border: #E5E5E5;
+  --border: #E5E5E0;
   --accent: #0066CC;
   --muted: #999999;
 }
@@ -15,11 +15,17 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: Georgia, 'Times New Roman', serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 a {
