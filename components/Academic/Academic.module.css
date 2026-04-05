@@ -1,0 +1,179 @@
+.section {
+  padding: 6rem 8rem;
+  max-width: 1000px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.headerLine {
+  width: 32px;
+  height: 1px;
+  background: var(--text);
+}
+
+.headerTitle {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.affiliation {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.research {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+  opacity: 0.8;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: all 0.2s ease;
+}
+
+.profileLink:hover {
+  border-color: var(--text);
+  text-decoration: none;
+}
+
+.scholarIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.metrics {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--border);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.metricValue {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.metricLabel {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metricDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+.coauthors {
+  padding-top: 0.5rem;
+}
+
+.coauthorsTitle {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.coauthorsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coauthor {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .profile {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .metrics {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .metricValue {
+    font-size: 1.5rem;
+  }
+}
