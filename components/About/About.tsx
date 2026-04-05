@@ -4,8 +4,8 @@ export default function About() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className={styles.headerIcon}>✦</span>
-        <h2 className={styles.headerTitle}>About Me</h2>
+        <span className={styles.headerLine} />
+        <h2 className={styles.headerTitle}>About</h2>
       </div>
       <div className={styles.content}>
         <p>

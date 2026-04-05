@@ -1,25 +1,24 @@
 .section {
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 6rem 4rem;
+  max-width: 800px;
 }
 
 .header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .headerLine {
-  width: 40px;
-  height: 2px;
+  width: 32px;
+  height: 1px;
   background: var(--text);
 }
 
 .headerTitle {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -28,65 +27,56 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
   }
 }
 
 .card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
   padding: 1.5rem;
-  transition: all 0.2s ease;
+  border: 1px solid var(--border);
   text-decoration: none;
   color: inherit;
   display: block;
-  background: var(--bg);
+  transition: border-color 0.2s ease;
 }
 
 .card:hover {
   border-color: var(--text);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   text-decoration: none;
 }
 
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
 .cardName {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
+  margin-bottom: 0.5rem;
 }
 
-.cardStars {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.875rem;
-  color: var(--muted);
+.cardMeta {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
 }
 
 .cardDescription {
   font-size: 0.9375rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 1rem;
 }
 
 .cardLanguage {
   display: inline-block;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   font-size: 0.75rem;
-  color: var(--muted);
-  padding: 0.25rem 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  padding: 0.25rem 0.5rem;
   background: var(--bg-secondary);
-  border-radius: 100px;
 }

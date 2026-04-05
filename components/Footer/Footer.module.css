@@ -1,24 +1,21 @@
 .footer {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 6rem 4rem 4rem;
+  padding: 4rem 4rem 3rem;
+  max-width: 800px;
   border-top: 1px solid var(--border);
 }
 
 .links {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 0.5rem 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .link {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   font-size: 0.875rem;
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
 .link:hover {
@@ -27,7 +24,7 @@
 }
 
 .copyright {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   font-size: 0.75rem;
-  color: var(--muted);
+  color: var(--text-muted);
 }

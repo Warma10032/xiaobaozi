@@ -1,38 +1,36 @@
 .section {
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 6rem 4rem;
+  max-width: 800px;
 }
 
 .header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .headerLine {
-  width: 40px;
-  height: 2px;
+  width: 32px;
+  height: 1px;
   background: var(--text);
 }
 
 .headerTitle {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.875rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text);
 }
 
 .content {
-  font-size: 1.125rem;
-  line-height: 1.9;
+  font-size: 1.0625rem;
+  line-height: 1.85;
   color: var(--text-muted);
-  max-width: 650px;
+  max-width: 580px;
 }
 
 .content p + p {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }

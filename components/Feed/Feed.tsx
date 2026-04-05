@@ -24,47 +24,29 @@ export default function Feed() {
       .catch(() => setLoading(false))
   }, [])
 
-  if (loading) {
-    return (
-      <section className={styles.section}>
-        <div className={styles.header}>
-          <span className={styles.headerIcon}>✦</span>
-          <h2 className={styles.headerTitle}>最近在做些什么</h2>
-        </div>
-        <p className={styles.loading}>Loading...</p>
-      </section>
-    )
-  }
-
-  if (items.length === 0) {
-    return (
-      <section className={styles.section}>
-        <div className={styles.header}>
-          <span className={styles.headerIcon}>✦</span>
-          <h2 className={styles.headerTitle}>最近在做些什么</h2>
-        </div>
-        <p className={styles.empty}>暂无动态</p>
-      </section>
-    )
-  }
-
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className={styles.headerIcon}>✦</span>
-        <h2 className={styles.headerTitle}>最近在做些什么</h2>
+        <span className={styles.headerLine} />
+        <h2 className={styles.headerTitle}>Recent</h2>
       </div>
-      <div className={styles.list}>
-        {items.map((item, index) => (
-          <div key={index} className={styles.item}>
-            <p className={styles.date}>{formatDate(item.pubDate)}</p>
-            <p
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: item.content || item.title }}
-            />
-          </div>
-        ))}
-      </div>
+      {loading ? (
+        <p className={styles.loading}>Loading...</p>
+      ) : items.length === 0 ? (
+        <p className={styles.empty}>暂无动态</p>
+      ) : (
+        <div className={styles.list}>
+          {items.map((item, index) => (
+            <div key={index} className={styles.item}>
+              <p className={styles.date}>{formatDate(item.pubDate)}</p>
+              <p
+                className={styles.content}
+                dangerouslySetInnerHTML={{ __html: item.content || item.title }}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   )
 }

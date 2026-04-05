@@ -5,8 +5,8 @@ export default function Sites() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className={styles.headerIcon}>✦</span>
-        <h2 className={styles.headerTitle}>我在互联网上的作品</h2>
+        <span className={styles.headerLine} />
+        <h2 className={styles.headerTitle}>Sites</h2>
       </div>
       <div className={styles.grid}>
         {sites.map((site) => (

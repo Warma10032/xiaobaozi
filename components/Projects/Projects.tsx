@@ -5,8 +5,8 @@ export default function Projects() {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <span className={styles.headerIcon}>✦</span>
-        <h2 className={styles.headerTitle}>GitHub Projects</h2>
+        <span className={styles.headerLine} />
+        <h2 className={styles.headerTitle}>Projects</h2>
       </div>
       <div className={styles.grid}>
         {projects.map((project) => (
@@ -17,10 +17,8 @@ export default function Projects() {
             rel="noopener noreferrer"
             className={styles.card}
           >
-            <div className={styles.cardHeader}>
-              <span className={styles.cardName}>{project.name}</span>
-              <span className={styles.cardStars}>{project.stars}</span>
-            </div>
+            <div className={styles.cardName}>{project.name}</div>
+            <div className={styles.cardMeta}>★ {project.stars}</div>
             <p className={styles.cardDescription}>{project.description}</p>
             <span className={styles.cardLanguage}>{project.language}</span>
           </a>
