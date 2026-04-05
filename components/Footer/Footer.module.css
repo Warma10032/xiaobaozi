@@ -1,0 +1,36 @@
+.footer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.divider {
+  color: var(--border);
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
