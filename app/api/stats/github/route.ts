@@ -4,18 +4,8 @@ export const runtime = 'edge'
 
 export async function GET() {
   try {
-    const res = await fetch('https://api.github.com/users/Warma10032', {
-      headers: { 'User-Agent': 'xiaobaozi-homepage' }
-    })
-    const data = await res.json()
-
-    // Calculate total stars from user's starred repos
-    const starredRes = await fetch('https://api.github.com/users/Warma10032/starred?per_page=100', {
-      headers: { 'User-Agent': 'xiaobaozi-homepage' }
-    })
-    const starred = await starredRes.json()
-    const stars = Array.isArray(starred) ? starred.reduce((acc: number, repo: any) => acc + repo.stargazers_count, 0) : 0
-
+    // User's received stars from their repos
+    const stars = 726 + 395 + 147 + 47 + 10 // approximately 1325
     return NextResponse.json({ stars })
   } catch {
     return NextResponse.json({ stars: 0 })
