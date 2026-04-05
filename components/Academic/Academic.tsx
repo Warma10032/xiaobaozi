@@ -18,9 +18,9 @@ const papers = [
   {
     title: "Two Steps to Precision: Enhancing Reliable API Invocation in Code Generation",
     authors: "Y Li, Z Tang, S Wang, G Qi",
-    venue: "NLPCC 2025",
+    venue: "NLPCC 2025, Springer",
     year: "2025",
-    link: "#"
+    link: "https://link.springer.com/chapter/10.1007/978-981-95-3346-6_33"
   }
 ]
 
