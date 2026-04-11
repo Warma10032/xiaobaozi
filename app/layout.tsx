@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Instrument_Sans } from 'next/font/google'
 import './globals.css'
+import { LanguageProvider } from '@/i18n/LanguageProvider'
 
 const instrumentSans = Instrument_Sans({
   subsets: ['latin'],
@@ -20,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN">
-      <body className={instrumentSans.className}>{children}</body>
+      <body className={instrumentSans.className}>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   )
 }

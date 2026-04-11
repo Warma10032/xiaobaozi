@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './Academic.module.css'
 
 const papers = [

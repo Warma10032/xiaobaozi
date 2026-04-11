@@ -1,7 +1,12 @@
+'use client'
+
 import { sites } from '@/data/sites'
+import { useLanguage } from '@/i18n/LanguageProvider'
 import styles from './Sites.module.css'
 
 export default function Sites() {
+  const { lang } = useLanguage()
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -18,8 +23,12 @@ export default function Sites() {
             className={styles.card}
           >
             <span className={styles.icon}>{site.icon}</span>
-            <span className={styles.name}>{site.name}</span>
-            <span className={styles.description}>{site.description}</span>
+            <span className={styles.name}>
+              {lang === 'zh' ? site.name : site.nameEn}
+            </span>
+            <span className={styles.description}>
+              {lang === 'zh' ? site.description : site.descriptionEn}
+            </span>
           </a>
         ))}
       </div>

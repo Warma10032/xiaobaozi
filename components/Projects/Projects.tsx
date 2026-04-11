@@ -1,7 +1,12 @@
+'use client'
+
 import { projects } from '@/data/projects'
+import { useLanguage } from '@/i18n/LanguageProvider'
 import styles from './Projects.module.css'
 
 export default function Projects() {
+  const { lang } = useLanguage()
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -19,7 +24,9 @@ export default function Projects() {
           >
             <div className={styles.cardName}>{project.name}</div>
             <div className={styles.cardMeta}>★ {project.stars}</div>
-            <p className={styles.cardDescription}>{project.description}</p>
+            <p className={styles.cardDescription}>
+              {lang === 'zh' ? project.description : project.descriptionEn}
+            </p>
             <span className={styles.cardLanguage}>{project.language}</span>
           </a>
         ))}

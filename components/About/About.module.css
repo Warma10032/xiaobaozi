@@ -18,14 +18,14 @@
 
 .headerTitle {
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
 .content {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.85;
   color: var(--text-muted);
   max-width: 580px;
