@@ -21,6 +21,7 @@ export const translations = {
     selectedPublications: 'Selected Publications',
   },
   feed: {
+    header: 'Feed',
     loading: 'Loading...',
     empty: '暂无动态',
     emptyEn: 'No recent activity',
