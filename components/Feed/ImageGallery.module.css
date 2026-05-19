@@ -1,0 +1,71 @@
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallerySingleGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-bottom: 1rem;
+  width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.galleryItem {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  width: fit-content;
+  line-height: 0;
+}
+
+.gallerySpanFull {
+  grid-column: span 2;
+}
+
+.gallerySingle {
+  grid-column: span 1;
+  justify-self: center;
+}
+
+.galleryGrid .galleryItem {
+  overflow: hidden;
+}
+
+.galleryImg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 4px 8px rgba(0, 0, 0, 0.02),
+    0 8px 16px rgba(0, 0, 0, 0.02);
+}
+
+.gallerySingleGrid .galleryItem {
+  width: fit-content;
+}
+
+.gallerySingleGrid .galleryImg {
+  max-height: 400px;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+}

@@ -1,0 +1,27 @@
+.extensionCard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.extensionCard:hover {
+  box-shadow: var(--shadow-float);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+}
+
+.videoIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

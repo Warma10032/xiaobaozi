@@ -1,0 +1,271 @@
+.echoCard {
+  width: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.5rem;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-whisper);
+  transition: box-shadow 0.2s ease;
+}
+
+.echoCard:hover {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.echoHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.echoLogo {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  object-fit: cover;
+  flex-shrink: 0;
+  outline: 1px solid var(--border-strong);
+  outline-offset: -1px;
+}
+
+.echoLogoPlaceholder {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: var(--bg);
+  outline: 1px solid var(--border-strong);
+  outline-offset: -1px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .echoLogo,
+  .echoLogoPlaceholder {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.echoHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.echoHeaderName {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.echoServerName {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.echoServerName:hover {
+  color: var(--accent);
+}
+
+.echoVerified {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #0ea5e9;
+  flex-shrink: 0;
+}
+
+.echoUsername {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.echoBody {
+  padding: 1rem 0;
+}
+
+.echoContent {
+  color: var(--text);
+}
+
+.echoExtension {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.echoFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.echoFooterLeft {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.echoDate {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  margin-right: 0.25rem;
+}
+
+.echoTag {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  max-width: 4.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.echoFooterRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.echoLikeBtn {
+  background: none;
+  border: none;
+  cursor: default;
+  padding: 0;
+  line-height: 1;
+  font-size: 1.25rem;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+}
+
+.echoFavCount {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+/* Markdown rendering */
+
+.mdParagraph {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.mdParagraph + .mdParagraph {
+  margin-top: var(--space-3);
+}
+
+.mdList {
+  margin: var(--space-3) 0;
+  padding-left: var(--space-5);
+}
+
+.mdListUnordered {
+  list-style-type: disc;
+}
+
+.mdListOrdered {
+  list-style-type: decimal;
+}
+
+.mdListItem {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.mdListItem + .mdListItem {
+  margin-top: var(--space-1);
+}
+
+.mdLink {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mdLink:hover {
+  color: var(--accent-hover);
+}
+
+.mdBlockquote {
+  margin: var(--space-3) 0;
+  padding: var(--space-2) var(--space-4);
+  border-left: 3px solid var(--border-strong);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.mdPre {
+  margin: var(--space-3) 0;
+  padding: var(--space-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+.mdInlineCode {
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+}
+
+/* Dark mode */
+
+[data-theme="dark"] .echoCard {
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .echoCard {
+    background: var(--bg);
+  }
+}
+
+@media (max-width: 640px) {
+  .echoCard {
+    padding: 1rem;
+  }
+
+  .mdParagraph,
+  .mdListItem {
+    font-size: 0.875rem;
+  }
+
+  .echoFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .echoFooterLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+}
