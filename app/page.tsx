@@ -6,7 +6,6 @@ import Projects from '@/components/Projects/Projects'
 import Sites from '@/components/Sites/Sites'
 import Feed from '@/components/Feed/Feed'
 import Footer from '@/components/Footer/Footer'
-import LanguageSwitcher from '@/i18n/LanguageSwitcher'
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <Sites />
       <Feed />
       <Footer />
-      <LanguageSwitcher />
     </>
   )
 }
