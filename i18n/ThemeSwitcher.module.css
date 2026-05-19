@@ -1,0 +1,39 @@
+.switcher {
+  position: fixed;
+  bottom: calc(var(--space-8) + 3rem + var(--space-4));
+  right: var(--space-8);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px var(--shadow-whisper);
+  z-index: 100;
+}
+
+.switcher:hover {
+  background: var(--bg);
+  border-color: var(--text-muted);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.switcher svg {
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .switcher {
+    bottom: calc(var(--space-4) + 3rem + var(--space-3));
+    right: var(--space-4);
+  }
+}
