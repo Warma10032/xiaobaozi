@@ -1,13 +1,13 @@
 .section {
-  padding: 6rem 8rem;
+  padding: var(--space-24) var(--space-8);
   max-width: 1000px;
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
 }
 
 .headerLine {
@@ -17,50 +17,51 @@
 }
 
 .headerTitle {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: 1.25rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-8);
 }
 
 .profile {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 2rem;
+  padding: var(--space-8);
   background: var(--bg-secondary);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
 }
 
 .profileInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: var(--space-2);
 }
 
 .name {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
   margin: 0;
 }
 
 .affiliation {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
   font-size: 0.875rem;
   color: var(--text-muted);
   margin: 0;
 }
 
 .research {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
   font-size: 0.875rem;
   color: var(--text-muted);
   margin: 0;
@@ -70,15 +71,16 @@
 .profileLink {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.625rem 1rem;
-  font-family: 'Instrument Sans', sans-serif;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text);
   text-decoration: none;
   border: 1px solid var(--border);
   background: var(--bg);
+  border-radius: var(--radius-md);
   transition: all 0.2s ease;
   white-space: nowrap;
 }
@@ -86,6 +88,7 @@
 .profileLink:hover {
   border-color: var(--text);
   text-decoration: none;
+  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .scholarIcon {
@@ -94,32 +97,32 @@
 }
 
 .papers {
-  padding-top: 0.5rem;
+  padding-top: var(--space-2);
 }
 
 .papersTitle {
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   color: var(--text-muted);
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--space-4) 0;
 }
 
 .paperList {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .paper {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.25rem;
-  border: 1px solid var(--border);
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--border-strong);
   background: var(--bg);
+  border-radius: var(--radius-md);
   text-decoration: none;
   color: inherit;
   transition: all 0.2s ease;
@@ -128,38 +131,42 @@
 .paper:hover {
   border-color: var(--text);
   text-decoration: none;
+  box-shadow: 0 0 0 1px var(--ring);
 }
 
 .paperYear {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-muted);
   min-width: 40px;
-  padding-top: 0.125rem;
+  padding-top: 2px;
 }
 
 .paperInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: var(--space-2);
   flex: 1;
 }
 
 .paperName {
+  font-family: 'LXGW WenKai Screen', var(--font-sans), system-ui, sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: var(--text);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .paperAuthors {
+  font-family: var(--font-display), Georgia, serif;
   font-size: 0.875rem;
   color: var(--text-muted);
   line-height: 1.4;
 }
 
 .paperVenue {
+  font-family: var(--font-display), Georgia, serif;
   font-size: 0.875rem;
   color: var(--text-muted);
   font-style: italic;
@@ -170,7 +177,7 @@
   height: 14px;
   color: var(--text-muted);
   flex-shrink: 0;
-  margin-top: 0.25rem;
+  margin-top: 2px;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -181,17 +188,17 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: 4rem 2rem;
+    padding: var(--space-16) var(--space-4);
   }
 
   .profile {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
 
   .paper {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 
   .externalIcon {
