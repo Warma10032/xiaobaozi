@@ -1,0 +1,74 @@
+[
+  {
+    "name": "博客",
+    "nameEn": "Blog",
+    "url": "https://blog.xiaobaozi.cn",
+    "icon": "📔",
+    "description": "学习笔记与生活记录",
+    "descriptionEn": "Learning notes and life records"
+  },
+  {
+    "name": "相册",
+    "nameEn": "Album",
+    "url": "https://album.xiaobaozi.cn",
+    "icon": "🖼️",
+    "description": "照片与回忆",
+    "descriptionEn": "Photos and memories"
+  },
+  {
+    "name": "图床",
+    "nameEn": "Image Bed",
+    "url": "https://imgbed.xiaobaozi.cn",
+    "icon": "📷",
+    "description": "图片托管服务",
+    "descriptionEn": "Image hosting service"
+  },
+  {
+    "name": "网盘",
+    "nameEn": "Cloud Drive",
+    "url": "https://pan.xiaobaozi.cn",
+    "icon": "📦",
+    "description": "文件存储与分享",
+    "descriptionEn": "File storage and sharing"
+  },
+  {
+    "name": "随记",
+    "nameEn": "Ideas",
+    "url": "https://memo.xiaobaozi.cn",
+    "icon": "✍️",
+    "description": "Ech0 灵感备忘录",
+    "descriptionEn": "Ech0 ideas memo"
+  },
+  {
+    "name": "VideoAdGuard",
+    "nameEn": "VideoAdGuard",
+    "url": "https://videoadguard.xiaobaozi.cn",
+    "icon": "📺",
+    "description": "视频广告拦截插件",
+    "descriptionEn": "Video ad blocking tool"
+  },
+  {
+    "name": "哈基米加密",
+    "nameEn": "Hajimi Encoder",
+    "url": "https://app.xiaobaozi.cn",
+    "icon": "🔒",
+    "description": "有趣的加密工具",
+    "descriptionEn": "Fun encryption tool"
+  },
+  {
+    "name": "New API",
+    "nameEn": "New API",
+    "url": "https://api.xiaobaozi.cn",
+    "icon": "⚡",
+    "description": "LLM API 服务",
+    "descriptionEn": "LLM API service"
+  },
+  {
+    "name": "协同编辑器",
+    "nameEn": "Docs",
+    "url": "https://docs.xiaobaozi.cn",
+    "icon": "📝",
+    "description": "毕设项目 —— 协同编辑器",
+    "descriptionEn": "Graduation project - collaboration editor"
+  }
+]

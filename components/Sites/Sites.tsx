@@ -1,6 +1,6 @@
 'use client'
 
-import { sites } from '@/data/sites'
+import sites from '@/data/sites.json'
 import { useLanguage } from '@/i18n/LanguageProvider'
 import styles from './Sites.module.css'
 
@@ -30,6 +30,9 @@ export default function Sites() {
               {lang === 'zh' ? site.description : site.descriptionEn}
             </span>
           </a>
+        ))}
+        {Array.from({ length: (4 - (sites.length % 4)) % 4 }).map((_, i) => (
+          <span key={`placeholder-${i}`} className={styles.placeholder} />
         ))}
       </div>
     </section>
