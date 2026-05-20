@@ -25,7 +25,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: '一只小包子 | Warma10032',
+  title: '小包子的个人主页',
   description: '东南大学学生 / 全栈开发 / AI爱好者',
 }
 
