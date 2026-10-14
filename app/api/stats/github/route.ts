@@ -70,7 +70,7 @@ async function fetchGitHubRepos(page: number): Promise<GitHubRepo[]> {
   }
 
   const response = await fetchWithTimeout(
-    `https://api.github.com/users/Warma10032/repos?per_page=100&page=${page}&sort=updated`,
+    `https://api.github.com/users/ZeroTang05/repos?per_page=100&page=${page}&sort=updated`,
     {
       headers,
       next: { revalidate: 3600 },

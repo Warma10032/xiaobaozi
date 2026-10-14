@@ -4,7 +4,7 @@
     "repoName": "VideoAdGuard",
     "description": "B站视频植入广告检测工具，基于大语言模型",
     "descriptionEn": "Bilibili video in-stream ad detection tool based on LLM",
-    "url": "https://github.com/Warma10032/VideoAdGuard",
+    "url": "https://github.com/ZeroTang05/VideoAdGuard",
     "language": "TypeScript"
   },
   {
@@ -12,7 +12,7 @@
     "repoName": "cyber-doctor",
     "description": "赛博华佗——多模态大模型智能体，疾病初诊",
     "descriptionEn": "Cyber Doctor — Multimodal LLM agent for preliminary disease diagnosis",
-    "url": "https://github.com/Warma10032/cyber-doctor",
+    "url": "https://github.com/ZeroTang05/cyber-doctor",
     "language": "Python"
   },
   {
@@ -20,7 +20,7 @@
     "repoName": "easytts",
     "description": "多角色有声小说制作工具",
     "descriptionEn": "Multi-character audio novel production tool",
-    "url": "https://github.com/Warma10032/easytts",
+    "url": "https://github.com/ZeroTang05/easytts",
     "language": "Python"
   },
   {

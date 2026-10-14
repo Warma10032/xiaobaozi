@@ -1,7 +1,7 @@
 export const translations = {
   hero: {
     name: '一只小包子',
-    nameEn: 'Warma10032',
+    nameEn: 'ZeroTang05',
     tagline: '东南大学 · 全栈开发 · AI爱好者',
     taglineEn: 'Southeast University · Full-stack Developer · AI Enthusiast',
   },
@@ -31,7 +31,7 @@ export const translations = {
   },
   footer: {
     copyright: '© {year} 一只小包子',
-    copyrightEn: '© {year} Warma10032',
+    copyrightEn: '© {year} ZeroTang05',
   },
   site: {
     header: 'Sites',

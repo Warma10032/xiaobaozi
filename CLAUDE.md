@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal homepage for "一只小包子" (Warma10032) — a Next.js 15 site with App Router, featuring an Anthropic-inspired warm cream aesthetic with real-time social stats.
+Personal homepage for "一只小包子" (ZeroTang05) — a Next.js 15 site with App Router, featuring an Anthropic-inspired warm cream aesthetic with real-time social stats.
 
 ## Commands
 

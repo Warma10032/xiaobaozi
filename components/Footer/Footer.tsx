@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.links}>
         <a href="mailto:warma10032@qq.com" className={styles.link}>Email</a>
-        <a href="https://github.com/Warma10032" target="_blank" rel="noopener noreferrer" className={styles.link}>GitHub</a>
+        <a href="https://github.com/ZeroTang05" target="_blank" rel="noopener noreferrer" className={styles.link}>GitHub</a>
         <a href="https://space.bilibili.com/397711814" target="_blank" rel="noopener noreferrer" className={styles.link}>{lang === 'zh' ? 'B站' : 'Bilibili'}</a>
         <a href="https://www.xiaohongshu.com/user/profile/5d4f274d0000000016026472" target="_blank" rel="noopener noreferrer" className={styles.link}>{lang === 'zh' ? '小红书' : 'REDnote'}</a>
       </div>
