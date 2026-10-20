@@ -20,12 +20,26 @@ const nextConfig = {
       {
         // The API routes are already revalidated hourly on Vercel. Caching
         // them at the edge too keeps the slow origin round trip off the
-        // critical path for repeat visitors.
+        // critical path for repeat visitors. The explicit `max-age` is what
+        // makes Cloudflare treat a JSON path as cacheable, `s-maxage` alone
+        // leaves it as DYNAMIC.
         source: '/api/:all*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=600',
+            value: 'public, max-age=300, s-maxage=3600, stale-while-revalidate=600',
+          },
+        ],
+      },
+      {
+        // The home page is a static shell that the client hydrates. A short
+        // browser TTL plus a longer edge TTL keeps repeat visits off the
+        // origin without pinning stale content on the visitor.
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=60, s-maxage=600, stale-while-revalidate=86400',
           },
         ],
       },
