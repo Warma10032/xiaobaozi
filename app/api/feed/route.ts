@@ -200,7 +200,10 @@ export async function GET(request: Request) {
       },
       {
         headers: {
-          'Cache-Control': `public, s-maxage=${REVALIDATE_SECONDS}, stale-while-revalidate=86400`,
+          // `s-maxage` must not be combined with `stale-while-revalidate`:
+          // s-maxage implies proxy-revalidate, and Cloudflare refuses to
+          // cache that combination.
+          'Cache-Control': `public, max-age=300, s-maxage=${REVALIDATE_SECONDS}`,
         },
       },
     )

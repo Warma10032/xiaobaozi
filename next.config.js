@@ -20,14 +20,14 @@ const nextConfig = {
       {
         // The API routes are already revalidated hourly on Vercel. Caching
         // them at the edge too keeps the slow origin round trip off the
-        // critical path for repeat visitors. The explicit `max-age` is what
-        // makes Cloudflare treat a JSON path as cacheable, `s-maxage` alone
-        // leaves it as DYNAMIC.
+        // critical path for repeat visitors. `s-maxage` must not be combined
+        // with `stale-while-revalidate`: s-maxage implies proxy-revalidate,
+        // and Cloudflare refuses to cache that combination.
         source: '/api/:all*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=300, s-maxage=3600, stale-while-revalidate=600',
+            value: 'public, max-age=300, s-maxage=3600',
           },
         ],
       },
@@ -39,7 +39,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=60, s-maxage=600, stale-while-revalidate=86400',
+            value: 'public, max-age=60, s-maxage=600',
           },
         ],
       },
