@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server'
+import { unstable_cache } from 'next/cache'
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout'
 
 export const runtime = 'nodejs'
 export const revalidate = 3600
 
 const ECH0_BASE_URL = 'https://memo.xiaobaozi.cn'
+const REVALIDATE_SECONDS = 3600
+const UPSTREAM_TIMEOUT_MS = 15_000
 
 interface Ech0File {
   id: string
@@ -51,11 +54,17 @@ export interface ServerInfo {
   sys_username: string
 }
 
+export interface FeedImage {
+  url: string
+  width?: number
+  height?: number
+}
+
 export interface FeedItem {
   id: string
   content: string
   username: string
-  images: string[]
+  images: FeedImage[]
   tags: string[]
   extension: string
   extension_type: string
@@ -74,13 +83,85 @@ export interface FeedResponse {
 
 const DEFAULT_PAGE_SIZE = 5
 
+/**
+ * The Ech0 backend lives next to the user while this app runs on a Vercel
+ * region overseas, so every uncached call is a cross-ocean round trip that
+ * added several seconds to the page load. The upstream responses are wrapped
+ * in `unstable_cache` so the origin is only hit once per hour instead of on
+ * every request. The upstream call is a POST, which the Next.js data cache
+ * does not cover on its own — caching the resolved function result does.
+ */
+const getCachedServerInfo = unstable_cache(
+  async (): Promise<ServerInfo | null> => {
+    const res = await fetchWithTimeout(
+      `${ECH0_BASE_URL}/api/connect`,
+      {
+        headers: { 'User-Agent': 'xiaobaozi-homepage' },
+        next: { revalidate: REVALIDATE_SECONDS },
+      },
+      UPSTREAM_TIMEOUT_MS,
+    )
+
+    if (!res.ok) {
+      throw new Error(`Ech0 server info failed: ${res.status}`)
+    }
+
+    const json = await res.json()
+    if (json.code !== 1) {
+      throw new Error(`Ech0 server info error: ${json.msg}`)
+    }
+
+    return json.data as ServerInfo
+  },
+  ['feed-server-info'],
+  { revalidate: REVALIDATE_SECONDS },
+)
+
+const getCachedEchoes = unstable_cache(
+  async (
+    page: number,
+    pageSize: number,
+  ): Promise<{ items: Ech0Echo[]; total: number }> => {
+    const res = await fetchWithTimeout(
+      `${ECH0_BASE_URL}/api/echo/page`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'xiaobaozi-homepage',
+        },
+        body: JSON.stringify({ page, pageSize }),
+      },
+      UPSTREAM_TIMEOUT_MS,
+    )
+
+    if (!res.ok) {
+      throw new Error(`Ech0 API request failed: ${res.status}`)
+    }
+
+    const json = await res.json()
+    if (json.code !== 1) {
+      throw new Error(`Ech0 API error: ${json.msg}`)
+    }
+
+    return {
+      items: json.data?.items ?? [],
+      total: json.data?.total ?? 0,
+    }
+  },
+  ['feed-echoes'],
+  { revalidate: REVALIDATE_SECONDS },
+)
+
 export async function GET(request: Request) {
   try {
     const { pageSize, page } = getParams(request.url)
 
     const [serverInfo, echoResult] = await Promise.all([
-      fetchServerInfo(),
-      fetchEchoes(page, pageSize),
+      // A failure here degrades to "no server info" instead of failing the
+      // whole feed, and it must not be cached as a permanent empty value.
+      getCachedServerInfo().catch(() => null),
+      getCachedEchoes(page, pageSize),
     ])
 
     const echoes = echoResult.items
@@ -90,8 +171,14 @@ export async function GET(request: Request) {
       content: echo.content ?? '',
       username: echo.username ?? serverInfo?.sys_username ?? '',
       images: (echo.echo_files ?? [])
-        .map((ef) => ef.file?.url)
-        .filter((url): url is string => Boolean(url)),
+        .map(
+          (ef): FeedImage => ({
+            url: ef.file?.url ?? '',
+            width: ef.file?.width,
+            height: ef.file?.height,
+          }),
+        )
+        .filter((image) => Boolean(image.url)),
       tags: (echo.tags ?? []).map((t) => t.name),
       extension: echo.extension ?? '',
       extension_type: echo.extension_type ?? '',
@@ -105,55 +192,20 @@ export async function GET(request: Request) {
       logo: serverInfo?.logo ?? '',
     }))
 
-    return NextResponse.json({
-      items,
-      hasMore: page * pageSize < echoResult.total,
-      server: serverInfo,
-    })
+    return NextResponse.json(
+      {
+        items,
+        hasMore: page * pageSize < echoResult.total,
+        server: serverInfo,
+      },
+      {
+        headers: {
+          'Cache-Control': `public, s-maxage=${REVALIDATE_SECONDS}, stale-while-revalidate=86400`,
+        },
+      },
+    )
   } catch {
     return NextResponse.json({ items: [], hasMore: false, server: null })
-  }
-}
-
-async function fetchServerInfo(): Promise<ServerInfo | null> {
-  try {
-    const res = await fetchWithTimeout(`${ECH0_BASE_URL}/api/connect`, {
-      headers: { 'User-Agent': 'xiaobaozi-homepage' },
-    })
-    if (!res.ok) return null
-    const json = await res.json()
-    if (json.code !== 1) return null
-    return json.data as ServerInfo
-  } catch {
-    return null
-  }
-}
-
-async function fetchEchoes(
-  page: number,
-  pageSize: number,
-): Promise<{ items: Ech0Echo[]; total: number }> {
-  const res = await fetchWithTimeout(`${ECH0_BASE_URL}/api/echo/page`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'User-Agent': 'xiaobaozi-homepage',
-    },
-    body: JSON.stringify({ page, pageSize }),
-  })
-
-  if (!res.ok) {
-    throw new Error(`Ech0 API request failed: ${res.status}`)
-  }
-
-  const json = await res.json()
-  if (json.code !== 1) {
-    throw new Error(`Ech0 API error: ${json.msg}`)
-  }
-
-  return {
-    items: json.data?.items ?? [],
-    total: json.data?.total ?? 0,
   }
 }
 
@@ -174,4 +226,3 @@ function getParams(url: string): { pageSize: number; page: number } {
 
   return { pageSize, page }
 }
-

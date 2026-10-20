@@ -20,13 +20,17 @@ const EXTENSION_TYPE = {
 interface EchoCardProps {
   echo: FeedItem
   lang: 'zh' | 'en'
-  eagerImages?: boolean
+  /**
+   * How many of this card's images should load eagerly. Only the first card
+   * of the feed gets one, the rest stay lazy.
+   */
+  priorityImages?: number
 }
 
 export default function EchoCard({
   echo,
   lang,
-  eagerImages = false,
+  priorityImages = 0,
 }: EchoCardProps) {
   return (
     <article className={styles.echoCard}>
@@ -37,6 +41,10 @@ export default function EchoCard({
             src={echo.logo}
             alt=""
             className={styles.echoLogo}
+            width={48}
+            height={48}
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className={styles.echoLogoPlaceholder} />
@@ -58,7 +66,7 @@ export default function EchoCard({
 
       {/* Images */}
       <div className={styles.echoBody}>
-        <ImageGallery images={echo.images} eager={eagerImages} />
+        <ImageGallery images={echo.images} priorityCount={priorityImages} />
 
         {/* Markdown content */}
         <div className={styles.echoContent}>

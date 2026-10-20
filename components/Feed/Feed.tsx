@@ -51,8 +51,18 @@ function distributeToColumns(
   return cols
 }
 
-function waitForImages(images: HTMLImageElement[]): Promise<void> {
-  return Promise.all(
+/**
+ * Waits for the gallery images to settle before the masonry columns are
+ * measured. Lazy images that never scroll into view would otherwise block the
+ * measurement forever, so the wait is capped: the intrinsic width/height
+ * attributes on every image already reserve the correct box, so the measured
+ * heights stay accurate even when the wait times out.
+ */
+function waitForImages(
+  images: HTMLImageElement[],
+  timeoutMs = 1500,
+): Promise<void> {
+  const allLoaded = Promise.all(
     images.map((image) => {
       const waitForLoad =
         image.complete && image.naturalWidth > 0
@@ -74,6 +84,11 @@ function waitForImages(images: HTMLImageElement[]): Promise<void> {
       })
     }),
   ).then(() => undefined)
+
+  return Promise.race([
+    allLoaded,
+    new Promise<void>((resolve) => setTimeout(resolve, timeoutMs)),
+  ])
 }
 
 export default function Feed() {
@@ -191,12 +206,12 @@ export default function Feed() {
           {!measured ? (
             <>
               <div className={styles.masonryCol}>
-                {items.map((item) => (
+                {items.map((item, index) => (
                   <EchoCard
                     key={item.id}
                     echo={item}
                     lang={lang}
-                    eagerImages
+                    priorityImages={index === 0 ? 1 : 0}
                   />
                 ))}
               </div>
@@ -206,7 +221,16 @@ export default function Feed() {
             columns.map((col, ci) => (
               <div key={ci} className={styles.masonryCol}>
                 {col.map((item) => (
-                  <EchoCard key={item.id} echo={item} lang={lang} />
+                  <EchoCard
+                    key={item.id}
+                    echo={item}
+                    lang={lang}
+                    priorityImages={
+                      items.findIndex((candidate) => candidate.id === item.id) === 0
+                        ? 1
+                        : 0
+                    }
+                  />
                 ))}
               </div>
             ))

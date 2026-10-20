@@ -1,34 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import projects from '@/data/projects.json'
 import { useLanguage } from '@/i18n/LanguageProvider'
+import { useGitHubStats } from '@/hooks/useGitHubStats'
 import styles from './Projects.module.css'
-
-interface GitHubProjectsResponse {
-  projects?: Record<string, number>
-}
 
 export default function Projects() {
   const { lang } = useLanguage()
-  const [projectStars, setProjectStars] = useState<Record<string, number>>({})
-
-  useEffect(() => {
-    let cancelled = false
-
-    fetch('/api/stats/github')
-      .then(parseProjectsResponse)
-      .then((data) => {
-        if (!cancelled) {
-          setProjectStars(data.projects ?? {})
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
+  const { data: githubStats } = useGitHubStats()
+  const projectStars = githubStats?.projects ?? {}
 
   return (
     <section className={styles.section}>
@@ -56,14 +36,6 @@ export default function Projects() {
       </div>
     </section>
   )
-}
-
-async function parseProjectsResponse(response: Response): Promise<GitHubProjectsResponse> {
-  if (!response.ok) {
-    throw new Error(`Request failed: ${response.status}`)
-  }
-
-  return response.json() as Promise<GitHubProjectsResponse>
 }
 
 function formatStarCount(value?: number): string {
